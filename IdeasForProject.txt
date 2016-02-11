@@ -1,0 +1,11 @@
+Something with CitiBike and Uber
+	TLC Data: http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml
+	Uber Data: https://github.com/fivethirtyeight/uber-tlc-foil-response
+	CitiBike Data: https://www.citibikenyc.com/system-data
+
+Something with Airplanes
+	AutoLanding: https://archive.ics.uci.edu/ml/datasets/Shuttle+Landing+Control
+	Airfoils: http://archive.ics.uci.edu/ml/datasets/Airfoil+Self-Noise
+	FAA Data: https://www.faa.gov/data_research/
+	OpenFlights: http://openflights.org/data.html
+	Personal Air Vehicle: https://data.nasa.gov/external-dataset?datasetId=68mp-qig5
