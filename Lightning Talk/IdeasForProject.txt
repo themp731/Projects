@@ -2,6 +2,9 @@ Something with CitiBike and Uber
 	TLC Data: http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml
 	Uber Data: https://github.com/fivethirtyeight/uber-tlc-foil-response
 	CitiBike Data: https://www.citibikenyc.com/system-data
+	https://data.cityofnewyork.us/Transportation/Real-Time-Traffic-Speed-Data/xsat-x5sa
+	https://developers.google.com/maps/pricing-and-plans/
+	http://sandropaganotti.com/wp-content/goodies/demos/isochrone/
 
 Something with Airplanes
 	AutoLanding: https://archive.ics.uci.edu/ml/datasets/Shuttle+Landing+Control
@@ -11,5 +14,7 @@ Something with Airplanes
 	Personal Air Vehicle: https://data.nasa.gov/external-dataset?datasetId=68mp-qig5
 	http://phys.org/news/2014-10-tomorrow-air-traffic.html
 		HAS LINK TO OTHER PROJECT
+	https://datahub.io/dataset/faa
+http://www.iata.org/policy/consumer-protection/Pages/flight-delays.aspx
 
 Hockey: WAR ON ICE
