@@ -24,7 +24,7 @@ data_iter["alchemy_category_score"][data_iter["alchemy_category_score"]=="?"]=0
 data_iter["news_front_page"][data_iter["news_front_page"]=="?"]=0
 data_cols=list(data_iter.columns)
 #I can do the full length of tags, but it will take forever, so I'm being lazy and only doing a few.
-combo_len = range(1,5)
+combo_len = range(1,3)
 
 #Creating a combination of the different features of different lengths
 feature_list = []
@@ -49,16 +49,19 @@ def get_score(model,X,y,features):
     #print "---------------------"
     return scores.mean()
 
-topscore=0
-for k in feature_list:
-    new_score = make_model(k)
-    if new_score > topscore:
-        topscore = new_score
-        best_feat = k
-print "The Best Score Is:  ",topscore
-print "With variables: ",best_feat
+def get_vars(feat_list):
+	topscore=0
+	best_feat=0
+	for k in feat_list:
+		new_score = make_model(k)
+		if new_score > topscore:
+			topscore = new_score
+			best_feat = k
+	print "The Best Score Is:  ",topscore
+	print "With variables: ",best_feat
+	return best_feat
 
-best_X = data_iter[best_feat]
+best_X = data_iter[get_vars(feature_list)]
 best_y = data_iter['label']
 model = DecisionTreeClassifier(min_samples_leaf=5,max_depth=6,criterion="gini")
 best_model = model.fit(best_X,best_y)
