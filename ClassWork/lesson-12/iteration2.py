@@ -19,12 +19,14 @@ data_iter = data[['alchemy_category_score','avglinksize','commonlinkratio_1'\
                   'framebased','frameTagRatio','hasDomainLink','html_ratio','image_ratio','is_news',
                   'lengthyLinkDomain','linkwordscore', 'news_front_page','non_markup_alphanum_characters',\
                   'numberOfLinks','numwords_in_url','parametrizedLinkRatio','spelling_errors_ratio','label']]
+#Cleaning data
+#This has slice errors, ignore, but memory intensive for large multi-index sets
 data_iter["is_news"][data_iter["is_news"]=="?"]=0
 data_iter["alchemy_category_score"][data_iter["alchemy_category_score"]=="?"]=0
 data_iter["news_front_page"][data_iter["news_front_page"]=="?"]=0
 data_cols=list(data_iter.columns)
 #I can do the full length of tags, but it will take forever, so I'm being lazy and only doing a few.
-combo_len = range(1,3)
+combo_len = range(2,6)
 
 #Creating a combination of the different features of different lengths
 feature_list = []
@@ -52,16 +54,22 @@ def get_score(model,X,y,features):
 def get_vars(feat_list):
 	topscore=0
 	best_feat=0
+	count=0
 	for k in feat_list:
 		new_score = make_model(k)
+		count+=1
+		print count
 		if new_score > topscore:
 			topscore = new_score
 			best_feat = k
+			print "Top: ",topscore
+			print "________________"
 	print "The Best Score Is:  ",topscore
 	print "With variables: ",best_feat
 	return best_feat
 
-best_X = data_iter[get_vars(feature_list)]
+best_feat = get_vars(feature_list)
+best_X = data_iter[best_feat]
 best_y = data_iter['label']
 model = DecisionTreeClassifier(min_samples_leaf=5,max_depth=6,criterion="gini")
 best_model = model.fit(best_X,best_y)
@@ -76,3 +84,11 @@ def build_tree_image(model,X):
     system("dot -Tpng tree.dot -o tree.png")
     
 build_tree_image(best_model,best_X)
+
+The Best Score Is:   0.598942443104
+With variables:  ['framebased', 'linkwordscore']
+
+"""IPython CPU timings (estimated):
+  User   :    6232.54 s.
+  System :       0.00 s.
+Wall time:    6232.51 s."""
